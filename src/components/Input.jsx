@@ -89,7 +89,6 @@ const Input = () => {
         [combinedId + ".isSeen"]: true,
         [combinedId + ".date"]: serverTimestamp(),
       });
-      
     }
   }
   return (
