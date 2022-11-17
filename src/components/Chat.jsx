@@ -35,7 +35,7 @@ const Chat = () => {
     <div className="chat">
       <div className="chatInfo">
         <span>{data.user?.displayName}</span>
-        <span>{online? "Online":"Offline"}</span>
+        {/* <span>{online? "Online":"Offline"}</span> */}
         <div className="chatIcons">
           <img src={Cam} alt="" />
           <img src={Add} alt="" />
