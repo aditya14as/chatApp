@@ -34,16 +34,24 @@ const Status = (props) => {
         : data.user.uid + currentUser.uid;
         console.log(userId)
 
-  const isSeen = async()=>{
-    const docRef = doc(db, "userChats", userId);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      // console.log("Document data:", docSnap.data()[combinedId].isSeen);
-      setSeen(docSnap.data()[combinedId].isSeen);
-    } 
-  }
+  // const isSeen = async()=>{
+  //   const docRef = doc(db, "userChats", userId);
+  //   const docSnap = await getDoc(docRef);
+  //   if (docSnap.exists()) {
+  //     // console.log("Document data:", docSnap.data()[combinedId].isSeen);
+  //     setSeen(docSnap.data()[combinedId].isSeen);
+  //   } 
+  // }
+  // if(userId){
+  //   isSeen()
+  // }
   if(userId){
-    isSeen()
+    const unSub = onSnapshot(doc(db, "userChats", userId), (doc) => {
+      doc.exists() && setSeen(doc.data()[combinedId].isSeen);
+      // if(doc.exists()){
+      //   console.log(doc.data())
+      // }
+    });
   }
   console.log("props");
   }, [props]);
